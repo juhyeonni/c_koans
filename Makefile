@@ -9,14 +9,14 @@ ALL_OBJF := $(patsubst $(SRCDIR)/%,$(BLDDIR)/%,$(ALL_SRCF:.c=.o))
 #MAINF := # use nm to find file with main and include it
 #FUNCF := $(filter-out $(MAIN_FILES), $(ALL_OBJF))
 
-INC := -I $(INCDIR)
+INC := -I $(INCDIR) -I /opt/homebrew/opt/criterion/include
 
 EXEC := c_koans
 
 STD := gnu11
-CFLAGS := -std=$(STD) -Wall -Werror -Wno-unused-function -Wno-nonnull
+CFLAGS := -std=$(STD) -Wall -Werror -Wno-unused-function -Wno-nonnull -Wno-string-compare
 
-CRITERION := -lcriterion
+CRITERION := -L/opt/homebrew/opt/criterion/lib -lcriterion
 
 .PHONY: setup all clean
 
